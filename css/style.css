@@ -1,0 +1,17 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  background: radial-gradient(circle farthest-side, #f8f8fc, #0000bc);
+}
+
+h2 {
+    margin-left: 260px;
+    font-size: -webkit-xxx-large;
+    margin-top: 270px;
+}

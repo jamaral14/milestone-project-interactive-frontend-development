@@ -69,6 +69,7 @@ function resetBoard() {
   });
 })();
 
+ 
 if (document.readyState == 'loading') {
   document.addEventListener('DOMContentLoaded', ready);
 }

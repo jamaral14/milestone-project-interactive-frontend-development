@@ -3,7 +3,9 @@
   margin: 0;
   box-sizing: border-box;
 }
+
 /*-------------------------------------------------------------> body and h2 */
+
 body {
   height: 100vh;
   display: flex;
@@ -15,9 +17,25 @@ h2 {
   margin-left: 390px;
   font-size: 50px;
   margin-top: 10px;
+  font-family: cursive;
 }
 
-/*------------------------------------------------------>  cards front-face back-face */ 
+/*------------------------------------------------------> game info */
+
+.game-info-container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-info {
+  font-family: serif;
+  color: #FFBB89;
+  font-size: 2em;
+}
+
+
+/*------------------------------------------------------>  cards front-face back-face */
 
 .memory-game {
   width: 600px;
@@ -25,18 +43,22 @@ h2 {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
-  perspective: 1000px; /*property is used to give a 3D-positioned element some perspective */
+  perspective: 1000px;
+  /*property is used to give a 3D-positioned element some perspective */
   margin-left: 325px;
   margin-top: 10px;
 }
 
 .memory-card {
-  width: calc(25% - 10px); /* calculation to be used as the property value*/
-  height: calc(33.333% - 10px); /*calculation to be used as the property value */
+  width: calc(25% - 10px);
+  /* calculation to be used as the property value*/
+  height: calc(33.333% - 10px);
+  /*calculation to be used as the property value */
   margin: 5px;
   position: relative;
   transform: scale(1);
-  transform-style: preserve-3d; /*property specifies how nested elements are rendered in 3D space. */
+  transform-style: preserve-3d;
+  /*property specifies how nested elements are rendered in 3D space. */
   transition: transform .5s;
 }
 
@@ -64,52 +86,59 @@ h2 {
   transform: rotateY(180deg);
 }
 
+.back-face:hover {
+  border-bottom: 5px solid rgba(0, 0, 0, 0);
+  transition: border-color 1s linear;
+  -moz-transition: border-color 1s linear;
+  -o-transition: border-color 1s linear;
+  -webkit-transition: border-color 1s linear;
+}
 
+.overlay-text.visible {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  color: #FF6D00;
+  font-family: serif;
+}
 
-/*----------------------------------------------------------------------> Media Queries */
-@media (max-width:928px) {
-   .memory-game {
-    width: 570px;
-    height: 570px;
-    margin: auto;
-    display: flex;
-    flex-wrap: wrap;
-    perspective: 500px;
-    margin-left: 100px;
-    margin-top: 65px;
-
-  }
-
-  .front-face,
-  .back-face {
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    position: absolute;
-    border-radius: 25px;
-    background: #1C7CCC;
-    backface-visibility: hidden;
-  }
-
-  h2 {
-    margin-left: 35px;
-    font-size: 70px;
-    margin-top: 75px;
-  
+.overlay-text.visible {
+  display: flex;
+  flex-direction: column;
+  animation: overlay-grow 500ms forwards;
 }
 
 
+@keyframes overlay-grow {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+    font-size: 0;
+  }
+  to {
+    background-color: rgba(0, 0, 0, .8);
+    font-size: 10em;
+  }
+}
 
-@media (max-width:768px) {
+
+/*----------------------------------------------------------------------> Media Queries */
+
+@media (max-width:1024px) {
   .memory-game {
-    width: 570px;
-    height: 570px;
+       width: 625px;
+    height: 550px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
     perspective: 500px;
-    margin-left: 100px;
-    margin-top: 65px;
+    margin-left: 155px;
+    margin-top: -36px;
 
   }
 
@@ -125,39 +154,95 @@ h2 {
   }
 
   h2 {
-    margin-left: 35px;
-    font-size: 70px;
-    margin-top: 75px;
+    margin-left: 200px;
+    font-size: 50px;
+    margin-top: 5px;
+
   }
 
-  @media (max-width:572px) {
+
+
+
+  @media (max-width:768px) {
     .memory-game {
-    width: 375px;
-    height: 375px;
+     width: 570px;
+    height: 525px;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    perspective: 250px;
-    margin-top: 60px;
-    margin-left: 25px;
+    perspective: 500px;
+    margin-left: 115px;
+    margin-top: 65px;
+
     }
 
     .front-face,
     .back-face {
-      width: 100%;
-      height: 100%;
-      padding: 3px;
-      position: absolute;
-      border-radius: 25px;
-      background: #1C7CCC;
-      backface-visibility: hidden;
+    width: 100%;
+    height: 100%;
+    padding: 6px;
+    position: absolute;
+    border-radius: 25px;
+    background: #1C7CCC;
+    backface-visibility: hidden;
     }
-    
- 
+
     h2 {
-    margin-left: 40px;
-    margin-top: 55px;
-    font-size: 35px;
+    margin-left: 115px;
+    font-size: 50px;
+    margin-top: 15px;
     }
     
-    /*-@media* (sm)devices-Phones->(min-width:576px) (md) tablets (min-width:768px) (lg) desktop (min-width:992px) (xl) (min-width:1200px) /
+    @keyframes overlay-grow {
+        from {
+          background-color: rgba(0, 0, 0, 0);
+          font-size: 0;
+        }
+        to {
+          background-color: rgba(0, 0, 0, .8);
+          font-size: 5em;
+        }
+      }
+
+    @media (max-width:572px) {
+      .memory-game {
+        width: 340px;
+        height: 350px;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        perspective: 250px;
+        margin-top: 60px;
+        margin-left: 15px;
+      }
+
+      .front-face,
+      .back-face {
+        width: 100%;
+        height: 100%;
+        padding: 3px;
+        position: absolute;
+        border-radius: 25px;
+        background: #1C7CCC;
+        backface-visibility: hidden;
+      }
+
+      @keyframes overlay-grow {
+        from {
+          background-color: rgba(0, 0, 0, 0);
+          font-size: 0;
+        }
+        to {
+          background-color: rgba(0, 0, 0, .8);
+          font-size: 3em;
+        }
+      }
+
+
+      h2 {
+        margin-left: 40px;
+        margin-top: 55px;
+        font-size: 25px;
+      }
+
+      /*-@media* (sm)devices-Phones->(min-width:576px) (md) tablets (min-width:768px) (lg) desktop (min-width:992px) (xl) (min-width:1200px) /
